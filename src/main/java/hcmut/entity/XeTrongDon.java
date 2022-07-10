@@ -1,7 +1,9 @@
 package hcmut.entity;
 
 import hcmut.enumeration.TruyenDong;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,8 +11,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "Xe")
-public class Xe {
+@Table(name = "XeTrongDon")
+public class XeTrongDon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,11 +30,10 @@ public class Xe {
     @Enumerated(EnumType.STRING)
     private TruyenDong truyenDong;
 
-    @Column(name = "bien_so_xe")
-    private String bienSoXe;
+    @Column(name = "so_luong")
+    private int soLuong;
 
     @ManyToOne
-    @JoinColumn(name = "id_chu_xe", referencedColumnName = "id")
-    private ChuXe chuXe;
-
+    @JoinColumn(name = "id_yeu_cau_thue_xe", referencedColumnName = "id")
+    private YeuCauThueXe yeuCauThueXe;
 }
